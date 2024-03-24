@@ -13,17 +13,15 @@
     <!--header starts-->
     <header>
         <nav>
-            <div class="logo">Portfolio</div>
+            <div class="logo">World of Pastry</div>
             <ul>
                 <li><a href={% url 'home' %} class="after">home</a></li>
                 <li><a href={% url 'admin:index' %} class="after">Admin</a></li>
 
                 {% if request.user.is_authenticated %}
-                    <li><a href={% url 'home'  %} class="after">Student Details</a></li>
-                    <li><a href={% url 'home'%} class="after">Add Details</a></li>
-                    <li><a href={% url 'logout'  %}><button>logout</button></a></li>
+                    <li><a href={% url 'logout'  %} class="signin"><button>logout</button></a></li>
                 {% else %}
-                    <li><a href={% url 'register'  %}><button>Register/Signin</button></a></li>
+                    <li><a href={% url 'register'  %} class="signin"><button>Register</button></a></li>
                 {% endif %}
 
             </ul>

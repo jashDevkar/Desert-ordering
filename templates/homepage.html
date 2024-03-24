@@ -15,22 +15,12 @@
 {% block content %}
 <!--main content starts-->
     <main>
-        <div class="title">
-            <h1>Student Management System</h1>
-        </div>
-        <div class="intro">
-            Step into the realm of educational innovation with our Student Management System – where chaos meets calm and
-            paperwork becomes a relic of the past! Unleash the power of seamless organization and brilliant data management
-            in a user-friendly universe. From enrollment escapades to graduation celebrations, we've conjured a magic potion
-            for academic efficiency. Bid farewell to the mundane and let the adventure of streamlined administration begin!
-            Your academic journey just got a whole lot more enchanting – welcome to a world where creativity meets
-            efficiency, and learning takes center stage.
-        </div>
-        <div class="button">
-            <button>Edit</button>
-            <button>View <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div>hello {{user.username}}</div>
 
+        {%else%}
+        <div> user please login to see this page!</div>
+        {% endif %}
     </main>
 <!--main section ends-->
 {% endblock content %}

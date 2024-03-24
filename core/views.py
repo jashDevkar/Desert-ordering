@@ -9,7 +9,7 @@ from .models import *
 def registerUser(request):
     
 
-    if request.method == "POST":
+    if request.method == 'POST':
         data = request.POST 
         username = data.get('username')
         email = data.get('email')
