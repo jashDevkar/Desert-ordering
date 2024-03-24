@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block link %}
+    <title>homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static '/css/base.css' %}>
+    <link rel="stylesheet" href={% static '/css/homepage.css' %}>
+{% endblock link %}
+
+
+{% block content %}
+<!--main content starts-->
+    <main>
+        <div class="title">
+            <h1>Student Management System</h1>
+        </div>
+        <div class="intro">
+            Step into the realm of educational innovation with our Student Management System – where chaos meets calm and
+            paperwork becomes a relic of the past! Unleash the power of seamless organization and brilliant data management
+            in a user-friendly universe. From enrollment escapades to graduation celebrations, we've conjured a magic potion
+            for academic efficiency. Bid farewell to the mundane and let the adventure of streamlined administration begin!
+            Your academic journey just got a whole lot more enchanting – welcome to a world where creativity meets
+            efficiency, and learning takes center stage.
+        </div>
+        <div class="button">
+            <button>Edit</button>
+            <button>View <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+    </main>
+<!--main section ends-->
+{% endblock content %}

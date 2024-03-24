@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block link %}
+    
+    {% endblock link %}
+</head>
+
+<body>
+    <!--header starts-->
+    <header>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul>
+                <li><a href={% url 'home' %} class="after">home</a></li>
+                <li><a href={% url 'admin:index' %} class="after">Admin</a></li>
+
+                {% if request.user.is_authenticated %}
+                    <li><a href={% url 'home'  %} class="after">Student Details</a></li>
+                    <li><a href={% url 'home'%} class="after">Add Details</a></li>
+                    <li><a href={% url 'logout'  %}><button>logout</button></a></li>
+                {% else %}
+                    <li><a href={% url 'register'  %}><button>Register/Signin</button></a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </header>
+    <!--header ends-->
+
+{% block content %}
+
+{% endblock content %}
+
+
+    <!--footer starts-->
+<footer>
+    <p>
+        &copy All copyright reserved
+    </p>
+</footer>
+<!--footer ends-->
+</body>
+
+</html>
