@@ -49,7 +49,7 @@ def loginUser(request):
         user =authenticate(username=username,password=password)
         if user is not None:
             login(request,user)
-            messages.success(request,'Login successfully')
+            messages.success(request,'Loged in successfully')
             return redirect('login')
         else:
             messages.error('Invalid credential')

@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href={% static '/css/base.css' %}>
-    <link rel="stylesheet" href={% static '/css/homepage.css' %}>
+    <link rel="stylesheet" href={% static 'css/base.css' %}>
+    <link rel="stylesheet" href={% static 'css/homepage.css' %}>
 {% endblock link %}
 
 
@@ -19,7 +19,13 @@
             <div>hello {{user.username}}</div>
 
         {%else%}
-        <div> user please login to see this page!</div>
+        <div class="homepageMssg">
+            <h1>Greetings!</h1>
+            <div class="mssg">Login inorder to see this page...</div>
+            <a class="loginAnchor" href={% url "login" %}><button class="Login">login?</button></a>
+
+        </div>
+        
         {% endif %}
     </main>
 <!--main section ends-->
