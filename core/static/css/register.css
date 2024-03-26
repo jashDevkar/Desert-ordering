@@ -106,6 +106,7 @@ main{
     margin-top: 25px;
     font-size: 14px;
     position: relative;
+   
 
 }
 .show_password_register span{
@@ -133,4 +134,7 @@ main{
 }
 .register_suggestion a{
     text-decoration: none;
+}
+.togglepassword2{
+    cursor: pointer;
 }
