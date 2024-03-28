@@ -60,7 +60,7 @@ def loginUser(request):
 def homePage(request):
     return render(request,'homepage.html')
 
-
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
