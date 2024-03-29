@@ -13,3 +13,9 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     
+class Employee(models.Model):
+    emp_name = models.CharField("name",max_length=50)
+
+    def __str__(self):
+        return f"Employee Name :{self.emp_name}"
+    
