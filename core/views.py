@@ -51,6 +51,9 @@ def loginUser(request):
             login(request,user)
             messages.success(request,'Loged in successfully')
             return redirect('login')
+        
+        elif user is None:
+            messages.error(request,"User doesnt exist...")
         else:
             messages.error('Invalid credential')
             return redirect('homepage')
