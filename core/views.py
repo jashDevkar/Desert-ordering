@@ -61,7 +61,8 @@ def loginUser(request):
 
 
 def homePage(request):
-    return render(request,'homepage.html')
+    pastrys = Pastry.objects.all()
+    return render(request,'homepage.html',{'pastrys':pastrys})
 
 def logoutUser(request):
     logout(request)

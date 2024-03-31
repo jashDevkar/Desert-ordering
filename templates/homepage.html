@@ -17,6 +17,11 @@
     <main>
         {% if request.user.is_authenticated %}
             <div>hello {{user.username}}</div>
+            <div>
+                {% for pastrys in pastrys %}
+                <div>{{pastrys.name}}</div>
+                {% endfor %}
+            </div>
 
         {%else%}
         <div class="homepageMssg">
