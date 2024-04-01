@@ -61,8 +61,20 @@ def loginUser(request):
 
 
 def homePage(request):
-   
-    return render(request,'homepage.html',)
+    dessert = Dessert.objects.all()
+
+    if request.method == 'POST':
+        order = Order.objects.create(customer=request.user)
+        orderedItems = []
+        totalPrice = 0
+        for dessert_id, quantity in request.POST.items():
+            if dessert_id.isdigit():
+                dessert = Dessert.objects.get(pk=dessert_id)
+                orderedItem = OrderedItem.objects.create(order=order, dessert=dessert, quantity=quantity)
+                orderedItems.append(orderedItem)
+                totalPrice += orderedItem.totalPrice()
+        return render(request, 'orderSuccessful.html', {'orderedItems': orderedItems, 'totalPrice': totalPrice})
+    return render(request,'homepage.html',{'dessert':dessert})
 
 def logoutUser(request):
     logout(request)

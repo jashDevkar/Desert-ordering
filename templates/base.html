@@ -16,7 +16,7 @@
             <div class="logo">World of Pastry</div>
             <ul>
                 <li><a href={% url 'home' %} class="after">home</a></li>
-                <li><a href={% url 'admin:index' %} class="after">Admin</a></li>
+               {% if request.user.is_superuser %} <li><a href={% url 'admin:index' %} class="after">Admin</a></li>{% endif %}
 
                 {% if request.user.is_authenticated %}
                     <li><a href={% url 'logout'  %} class="signin"><button>logout</button></a></li>

@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import Student,Employee,Desert
+from .models import Student,Employee,Dessert,OrderedItem,Order
 
-admin.site.register(Student)
-admin.site.register(Employee)
-admin.site.register(Desert)
+
+admin.site.register(Dessert)
+admin.site.register(OrderedItem)
+admin.site.register(Order)
+
 
 
 

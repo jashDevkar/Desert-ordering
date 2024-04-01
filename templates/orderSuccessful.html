@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <title>homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static 'css/base.css' %}>
+    <link rel="stylesheet" href={% static 'css/homepage.css' %}>
+{% endblock link %}
+
+{% block content %}
+
+
+
+    <h1>{{request.user.username}} your order have been confirmed</h1>
+    <p>Your order has been placed successfully. Thank you!</p>
+    <h2>Ordered Items:</h2>
+    <ul>
+        {% for orderedItem in orderedItems %}
+            <li>{{ orderedItem.dessert.name }} - Quantity: {{ orderedItem.quantity }} - Price: {{ orderedItem.totalPrice }} /-</li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: {{ totalPrice }} /-</p>
+
+
+{% endblock content %}

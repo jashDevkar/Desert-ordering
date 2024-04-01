@@ -36,8 +36,29 @@ class Item(models.Model):
     
 
 
-class Desert(models.Model):
-    name=models.CharField("Desert name: ",max_length=50)
+class Dessert(models.Model):
+    name=models.CharField("Desert name ",max_length=50)
     price = models.DecimalField(max_digits=10,decimal_places=2)
     image=models.ImageField(upload_to="desert_image/",blank=True,null=True)
+    decription = models.TextField("Desert Description")
 
+    def __str__(self):
+        return self.name
+
+class Order(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.customer.username
+
+class OrderedItem(models.Model):
+    order=models.ForeignKey(Order,on_delete=models.CASCADE)
+    dessert = models.ForeignKey(Dessert,on_delete=models.CASCADE)
+    quantity = models.IntegerField()     
+
+    def totalPrice(self):
+        return self.dessert.price * int(self.quantity)
+
+    
+    
