@@ -35,23 +35,9 @@ class Item(models.Model):
         return self.name
     
 
-class Pastry(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def __str__(self):
-        return self.name
+class Desert(models.Model):
+    name=models.CharField("Desert name: ",max_length=50)
+    price = models.DecimalField(max_digits=10,decimal_places=2)
+    image=models.ImageField(upload_to="desert_image/",blank=True,null=True)
 
-
-class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    pastry = models.ForeignKey(Pastry, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-
-
-    def total_price(self):
-        return self.pastry.price * self.quantity
-
-    def __str__(self):
-        return f'user: {self.user} quantity :{self.quantity}'
-    
