@@ -1,0 +1,14 @@
+.main-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+.success{
+    background-color: rgb(153, 255, 153);
+    color: green;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}

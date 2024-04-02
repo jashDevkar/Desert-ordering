@@ -1,44 +1,27 @@
 main{
-    background-color: #f2f2f2;
-    color:#333333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 80px 50px;
-    gap: 50px;
-    box-sizing: border-box;
-    height: 470px;
+    height: 80%;
+    
 }
 
-.title {
-    font-size: 35px;
-}
-
-.intro {
-    text-align: center;
-    padding: 0px 80px;
-    font-size: 20px;
-}
-
-.button {
+.center-div{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 2rem;
+}
+.card{
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 4px 2px black;
+    height: 5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
-.button button {
-    background-color: #cccccc;
-    padding: 5px 15px;
-    font-size: 17px;
-    color: #333333;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    transition: 0.7s ease-in-out;
-}
-.button button:hover{
-    background-color: #fec86a;
-}
 .homepageMssg{
     width:30%;
     padding: 20px;
@@ -50,6 +33,7 @@ main{
     background-color: white;
     box-shadow: 0px 0px 10px black;
     border-radius: 5px;
+
 }
 .Login{
     padding: 10px 12px;
@@ -71,4 +55,19 @@ main{
 }
 .loginAnchor{
     margin-top: 10%;
+}
+.place-order{
+    width: 100%;
+    padding: 1% 0rem;
+    cursor: pointer;
+    background-color:  rgb(153, 255, 153);
+    color: green;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 2px black;
+}
+.image{
+    width: 5rem;
+    height: 100%;
+    
 }

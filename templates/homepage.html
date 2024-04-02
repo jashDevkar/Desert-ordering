@@ -3,44 +3,55 @@
 
 
 {% block link %}
-    <title>homepage</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href={% static 'css/base.css' %}>
-    <link rel="stylesheet" href={% static 'css/homepage.css' %}>
+<title>homepage</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href={% static 'css/base.css' %}>
+<link rel="stylesheet" href={% static 'css/homepage.css' %}>
 {% endblock link %}
 
 
 {% block content %}
 <!--main content starts-->
-    <main>
-        {% if request.user.is_authenticated %}
-            <div>hello {{user.username}}</div>
-            
+<main>
+    {% if request.user.is_authenticated %}
 
 
-            <form method="post">
-                {% csrf_token %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <div class="center-div">
                 {% for desserts in dessert %}
+
+
+                <div class="card">
+                    <img src= "/media/{{desserts.dessert_image}}" class="image">
                     <label>{{ desserts.name }}</label>
+                    <span> price :- {{desserts.price}} /-</span>
                     <input type="number" name="{{ desserts.pk }}" value="0" min="0">
-                    <span> {{desserts.price}} /-</span>
-                    <br>
+                    
+                </div>
+
                 {% endfor %}
-                <button type="submit">Place Order</button>
-            </form>
+                <button type="submit" class="place-order">Place Order</button>
+            </div>
+    </form>
+    </div>
 
 
-        {%else%}
-        <div class="homepageMssg">
-            <h1>Greetings!</h1>
-            <div class="mssg">Login inorder to see this page...</div>
-            <a class="loginAnchor" href={% url "login" %}><button class="Login">login?</button></a>
+    {%else%}
+    <div class="center-div">
+    <div class="homepageMssg">
+        <h1>Greetings!</h1>
+        <div class="mssg">Login inorder to see this page...</div>
+        <a class="loginAnchor" href={% url "login" %}><button class="Login">login?</button></a>
 
-        </div>
-        
-        {% endif %}
-    </main>
+    </div>
+</div>
+
+    {% endif %}
+</main>
 <!--main section ends-->
 {% endblock content %}
