@@ -39,7 +39,7 @@ class Item(models.Model):
 class Dessert(models.Model):
     name=models.CharField("Desert name ",max_length=50)
     price = models.DecimalField(max_digits=10,decimal_places=2)
-    dessert_image=models.ImageField(upload_to="desert_image",blank=True,null=True)
+    dessert_image=models.ImageField(upload_to="desert_image",blank=True)
     decription = models.TextField("Desert Description")
 
     def __str__(self):
