@@ -71,3 +71,9 @@ main{
     height: 100%;
     
 }
+.hidden{
+    display: none;
+}
+.show{
+    display: flex;
+}

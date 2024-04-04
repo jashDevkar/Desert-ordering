@@ -27,11 +27,11 @@
 
 
                 <div class="card">
-                    <img src= "media/{{desserts.dessert_image}}" class="image">
+                    <img src="media/{{desserts.dessert_image}}" class="image">
                     <label>{{ desserts.name }}</label>
                     <span> price :- {{desserts.price}} /-</span>
-                    <input type="number" name="{{ desserts.pk }}" value="0" min="0">
-                    
+                    <input type="number" name="{{ desserts.pk }}" value="0" min="0" style="display: none;" id="quantity_{{ desserts.id }}">
+                    <button type="button" onclick="toggleQuantityInput('{{ desserts.id }}')" id="addbtn_{{desserts.id}}">Add to Cart</button>
                 </div>
 
                 {% endfor %}
@@ -43,15 +43,36 @@
 
     {%else%}
     <div class="center-div">
-    <div class="homepageMssg">
-        <h1>Greetings!</h1>
-        <div class="mssg">Login inorder to see this page...</div>
-        <a class="loginAnchor" href={% url "login" %}><button class="Login">login?</button></a>
+        <div class="homepageMssg">
+            <h1>Greetings!</h1>
+            <div class="mssg">Login inorder to see this page...</div>
+            <a class="loginAnchor" href={% url "login" %}><button class="Login">login?</button></a>
 
+        </div>
     </div>
-</div>
 
     {% endif %}
 </main>
 <!--main section ends-->
 {% endblock content %}
+
+{%block script%}
+
+<script>
+    function toggleQuantityInput(dessertId) {
+            var quantityInput = document.getElementById('quantity_' + dessertId);
+            var addbtn = document.getElementById('addbtn_'+dessertId)
+            if (quantityInput.style.display === 'none' || quantityInput.style.display === '') {
+                quantityInput.style.display = 'inline-block';
+                quantityInput.value=1
+                addbtn.innerText="Delete"
+            } else {
+                quantityInput.style.display = 'none';
+                addbtn.innerText="Add to Cart"
+                quantityInput.value = 0
+
+            }
+        }
+</script>
+
+{%endblock script%}
