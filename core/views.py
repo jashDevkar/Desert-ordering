@@ -68,8 +68,9 @@ def homePage(request):
         orderedItems = []
         totalPrice = 0
         for dessert_id, quantity in request.POST.items():
+            print(quantity)
             if dessert_id.isdigit():
-                dessert = Dessert.objects.get(pk=dessert_id)
+                dessert = Dessert.objects.get(id=dessert_id)
                 orderedItem = OrderedItem.objects.create(order=order, dessert=dessert, quantity=quantity)
                 orderedItems.append(orderedItem)
                 totalPrice += orderedItem.totalPrice()

@@ -15,15 +15,27 @@
 <div class="main-div">
     <h1>{{request.user.username}} your order have been confirmed</h1>
     <p class="success">Your order has been placed successfully. Thank you!</p>
-    <h2>Ordered Items:</h2>
-    <ul>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
         {% for orderedItem in orderedItems %}
-        <li>{{ orderedItem.dessert.name }} * {{ orderedItem.quantity }} -  {{ orderedItem.totalPrice }}
-            /-</li>
-        {% endfor %}
-    </ul>
-    <p>Total Price: {{ totalPrice }} /-</p>
+        <tr>
+            <td>{{ orderedItem.dessert.name }}</td>
+            <td>{{orderedItem.quantity}}</td>
+            <td>{{ orderedItem.totalPrice }}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td colspan="3">Total Price: {{totalPrice}}</td>
+        </tr>
+    </table>
+
 </div>
+
 
 
 {% endblock content %}

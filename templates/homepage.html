@@ -28,10 +28,18 @@
 
                 <div class="card">
                     <img src="media/{{desserts.dessert_image}}" class="image">
-                    <label>{{ desserts.name }}</label>
-                    <span> price :- {{desserts.price}} /-</span>
-                    <input type="number" name="{{ desserts.pk }}" value="0" min="0" style="display: none;" id="quantity_{{ desserts.id }}">
-                    <button type="button" onclick="toggleQuantityInput('{{ desserts.id }}')" id="addbtn_{{desserts.id}}">Add to Cart</button>
+                    <div class="innercard">
+                        <label>{{ desserts.name }}</label>
+                        <span> price :- {{desserts.price}} /-</span>
+                        <span>{{desserts.decription}}</span>
+                        <div>
+                            <label id="labelofinput{{desserts.pk}}" style="display: none;">Quantitiy:-</label>
+                            <input type="number" name="{{ desserts.id }}" value="0" min="0" style="display: none;"
+                                id="quantity_{{ desserts.id }}">
+                            <button type="button" onclick="toggleQuantityInput('{{ desserts.id }}')"
+                                id="addbtn_{{desserts.id}}" class="addtocart">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
 
                 {% endfor %}
@@ -60,19 +68,26 @@
 
 <script>
     function toggleQuantityInput(dessertId) {
-            var quantityInput = document.getElementById('quantity_' + dessertId);
-            var addbtn = document.getElementById('addbtn_'+dessertId)
-            if (quantityInput.style.display === 'none' || quantityInput.style.display === '') {
-                quantityInput.style.display = 'inline-block';
-                quantityInput.value=1
-                addbtn.innerText="Delete"
-            } else {
-                quantityInput.style.display = 'none';
-                addbtn.innerText="Add to Cart"
-                quantityInput.value = 0
+        var quantityInput = document.getElementById('quantity_' + dessertId);
+        var addbtn = document.getElementById('addbtn_' + dessertId)
+        var label = document.getElementById('labelofinput'+dessertId)
+        if (quantityInput.style.display === 'none' || quantityInput.style.display === '') {
+            quantityInput.style.display = 'inline-block';
+            quantityInput.value = 1
+            addbtn.innerText = "Delete"
+            addbtn.classList.remove('addtocart')
+            addbtn.classList.add('delete')
+            label.style.display = 'inline-block'
+        } else {
+            quantityInput.style.display = 'none';
+            addbtn.innerText = "Add to Cart"
+            quantityInput.value = 0
+            addbtn.classList.remove('delete')
+            addbtn.classList.add('addtocart')
+            label.style.display = 'none'
 
-            }
         }
+    }
 </script>
 
 {%endblock script%}
