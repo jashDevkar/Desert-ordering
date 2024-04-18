@@ -24,12 +24,10 @@
         <div>
             <div class="center-div">
                 {% for desserts in dessert %}
-
-
                 <div class="card">
-                    <img src="media/{{desserts.dessert_image}}" class="image">
-                    <div class="innercard">
-                        <label>{{ desserts.name }}</label>
+                    <div class="image-div"><img src="media/{{desserts.dessert_image}}" class="image"></div>
+                    <div class="desert-info-div">
+                        <h2>{{ desserts.name }}</h2>
                         <span> price :- {{desserts.price}} /-</span>
                         <span>{{desserts.decription}}</span>
                         <div>

@@ -4,11 +4,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.views.decorators.cache import cache_control
 
 
 def registerUser(request):
     
-
     if request.method == 'POST':
         data = request.POST 
         username = data.get('username')
@@ -49,20 +49,18 @@ def loginUser(request):
         user =authenticate(username=username,password=password)
         if user is not None:
             login(request,user)
-            messages.success(request,'Loged in successfully')
-            return redirect('login')
+            return redirect('home')
         
         elif user is None:
             messages.error(request,"User doesnt exist...")
         else:
             messages.error('Invalid credential')
-            return redirect('homepage')
+            return redirect('login')
     return render(request,'core/login.html')
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def homePage(request):
     dessert = Dessert.objects.all()
-
     if request.method == 'POST':
         order = Order.objects.create(customer=request.user)
         orderedItems = []
@@ -75,7 +73,8 @@ def homePage(request):
                 orderedItems.append(orderedItem)
                 totalPrice += orderedItem.totalPrice()
         return render(request, 'orderSuccessful.html', {'orderedItems': orderedItems, 'totalPrice': totalPrice})
-    return render(request,'homepage.html',{'dessert':dessert})
+    return render(request,'homePage.html',{'dessert':dessert})
+
 
 def logoutUser(request):
     logout(request)

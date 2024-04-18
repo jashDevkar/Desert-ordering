@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     {% block link %}
 
     
@@ -20,7 +23,7 @@
     <!--header starts-->
     <header>
         <nav>
-            <div class="logo">World of Pastry</div>
+            <div class="logo">World of Deserts</div>
             <ul>
                 <li><a href={% url 'home' %} class="after">home</a></li>
                {% if request.user.is_superuser %} <li><a href={% url 'admin:index' %} class="after">Admin</a></li>{% endif %}
