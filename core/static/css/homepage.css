@@ -15,7 +15,7 @@ main {
 
 .card {
     width: 90vw;
-    height:150px;
+    min-height:150px;
     background-color: white;
     box-shadow: 0px 0px 4px black;
     margin: 10px 0px;
@@ -26,9 +26,11 @@ main {
 }
 
 .desert-info-div{
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding-bottom: 10px;
 }
 
 .image {
